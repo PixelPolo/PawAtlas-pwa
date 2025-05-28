@@ -20,10 +20,20 @@ Here is the link of the application:
 Here is the university page listing all student projects:  
 <https://www.unifr.ch/inf/softeng/en/research/students.html>
 
-Or you can download the document directly:  
-<https://www.unifr.ch/inf/softeng/en/assets/public/files/research/students_projects/bachelor/Bachelor_Ricci_Paul.pdf>
+Or you can download the document directly [here](https://www.unifr.ch/inf/softeng/en/research/students.html).
 
 ## pawatlas-client-server
 
 Refactored version using a NestJS backend and a new Angular frontend adapted to a REST API.  
 Same functionalities as above, with a PostgreSQL database and the possibility to add a companion.
+
+## Some screenshots of the client-server app
+
+<img src="./pawatlas-client-server/pawatlas-frontend/screenshots/00_desktop.png" alt="menu" width="600">  
+<img src="./pawatlas-client-server/pawatlas-frontend/screenshots/01_desktop.png" alt="menu" width="600">
+
+<img src="./pawatlas-client-server/pawatlas-frontend/screenshots/00_mobile.png" alt="menu" width="300">  
+<img src="./pawatlas-client-server/pawatlas-frontend/screenshots/01_mobile.png" alt="menu" width="300">
+
+<img src="./pawatlas-client-server/pawatlas-frontend/screenshots/02_mobile.png" alt="menu" width="300">
+<img src="./pawatlas-client-server/pawatlas-frontend/screenshots/03_mobile.png" alt="menu" width="300">
