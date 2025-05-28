@@ -20,7 +20,7 @@ Here is the link of the application:
 Here is the university page listing all student projects:  
 <https://www.unifr.ch/inf/softeng/en/research/students.html>
 
-Or you can download the document directly [here](https://www.unifr.ch/inf/softeng/en/research/students.html).
+Or you can download the document directly [here](https://www.unifr.ch/inf/softeng/en/assets/public/files/research/students_projects/bachelor/Bachelor_Ricci_Paul.pdf).
 
 ## pawatlas-client-server
 
