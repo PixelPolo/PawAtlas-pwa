@@ -1,0 +1,31 @@
+.card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 1000;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-height: 70%;
+    max-width: 500px;
+    overflow: auto;
+  }
+  
+  /* https://www.swebdev.fr/blog/personnaliser-l-apparence-d-un-input-file-en-css */
+  input[type="file"]::file-selector-button {
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 8px;
+    background: none;
+    color: #087042; /* Primary Color to check ! */
+  }
+  
+  .image-container img {
+    width: 20%;
+    height: 20%;
+    object-fit: cover;
+    object-position: center;
+  }
+  

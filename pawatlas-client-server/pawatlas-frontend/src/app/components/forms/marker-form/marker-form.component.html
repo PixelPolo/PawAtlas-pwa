@@ -1,0 +1,82 @@
+<div class="form-popup">
+  <!-- Title -->
+  <h1>{{ markerToEdit ? "Modifier" : "Ajouter" }} un lieu</h1>
+
+  <h3>Informations</h3>
+
+  <!-- Form : New Marker-->
+  <form [formGroup]="newMarkerForm" (ngSubmit)="onSubmit()">
+    <!-- type -->
+    <div class="form-select">
+      <label for="type">Type *</label>
+      <select formControlName="type" id="type" (ngModelChange)="onTypeChange()">
+        <option value="" disabled>Choisir un type</option>
+        @for(type of this.types; track type.typeID) {
+        <option value="{{ type.typeID }}">{{ type.typeName }}</option>
+        }
+      </select>
+    </div>
+
+    <!-- categoryID -->
+    <div class="form-select">
+      <label for="categoryID">Catégorie *</label>
+      <select formControlName="categoryID" id="categoryID">
+        <option value="" disabled>Choisir une catégorie</option>
+        @for(category of this.filteredCategories; track category.categoryID) {
+        <option value="{{ category.categoryID }}">
+          {{ category.categoryName }}
+        </option>
+        }
+      </select>
+    </div>
+
+    <!-- markerName -->
+    <div class="form-input">
+      <label for="markerName">Nom du lieu *</label>
+      <input
+        type="text"
+        formControlName="markerName"
+        id="markerName"
+        placeholder="Nom du lieu"
+      />
+    </div>
+
+    <!-- markerDescription -->
+    <div class="form-textarea">
+      <label for="markerDescription">Description *</label>
+      <textarea
+        formControlName="markerDescription"
+        id="markerDescription"
+        placeholder="Description du lieu"
+        maxlength="512"
+      ></textarea>
+    </div>
+
+    @if(isAddingService) {
+    <!-- Contact Form -->
+    <app-contact-form #contactForm [contactToEdit]="contactToEdit" />
+
+    <!-- Address Form -->
+    <app-address-form #addressForm [addressToEdit]="addressToEdit" />
+    }
+
+    <!-- Image Form -->
+    <app-image-form #imageForm [imageToEdit]="imageToEdit" />
+
+    <!-- Submit and Cancel buttons -->
+    <div class="form-submit">
+      <!-- Cancel -->
+      <button class="cancel-button" type="button" (click)="onCloseForm()">
+        Annuler
+      </button>
+      <!-- Submit -->
+      <button
+        class="submit-button"
+        type="submit"
+        [disabled]="!newMarkerForm.valid"
+      >
+        {{ markerToEdit ? "Modifier" : "Ajouter" }}
+      </button>
+    </div>
+  </form>
+</div>

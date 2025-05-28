@@ -1,0 +1,200 @@
+<div class="form-popup">
+  <!-- Title -->
+  <h1>{{ animalToEdit ? "Modifier" : "Ajouter" }} un animal</h1>
+  <h3>Informations</h3>
+
+  <!-- Form : New Animal-->
+  <form [formGroup]="newAnimalForm" (ngSubmit)="onSubmit()">
+    <!-- chipNumber -->
+    <div class="form-input">
+      <label for="chipNumber">Numéro de puce</label>
+      <input
+        type="text"
+        formControlName="chipNumber"
+        id="chipNumber"
+        placeholder="Numéro de puce"
+      />
+    </div>
+
+    <!-- animalName -->
+    <div class="form-input">
+      <label for="animalName">Nom de l'animal</label>
+      <input
+        type="text"
+        formControlName="animalName"
+        id="animalName"
+        placeholder="Nom de l'animal"
+      />
+    </div>
+
+    <!-- animalBirthName -->
+    <div class="form-input">
+      <label for="animalBirthName">Nom de naissance</label>
+      <input
+        type="text"
+        formControlName="animalBirthName"
+        id="animalBirthName"
+        placeholder="Nom de naissance"
+      />
+    </div>
+
+    <!-- animalBirthDate -->
+    <div class="form-input">
+      <label for="animalBirthDate">Date de naissance</label>
+      <input
+        type="date"
+        formControlName="animalBirthDate"
+        id="animalBirthDate"
+      />
+    </div>
+
+    <!-- animalType -->
+    <div class="form-input">
+      <label for="animalType">Type d'animal</label>
+      <input
+        type="text"
+        formControlName="animalType"
+        id="animalType"
+        placeholder="Chat..."
+      />
+    </div>
+
+    <!-- animalBreed -->
+    <div class="form-input">
+      <label for="animal">Race ou nom d'élevage</label>
+      <input
+        type="text"
+        formControlName="animalBreed"
+        id="animalBreed"
+        placeholder="Race ou nom d'élevage"
+      />
+    </div>
+
+    <!-- gender -->
+    <div class="form-select">
+      <label for="genderID">Genre</label>
+      <select formControlName="genderID" id="genderID">
+        <option value="" disabled>Choisir un genre</option>
+        @for(gender of this.genders; track gender.genderID) {
+        <option value="{{ gender.genderID }}">{{ gender.genderName }}</option>
+        }
+      </select>
+    </div>
+
+    <!-- animalColor -->
+    <div class="form-input">
+      <label for="animalColor">Couleur</label>
+      <input
+        type="text"
+        formControlName="animalColor"
+        id="animalColor"
+        placeholder="Couleur"
+      />
+    </div>
+
+    <!-- animalDescription -->
+    <div class="form-textarea">
+      <label for="animalDescription">Description</label>
+      <textarea
+        formControlName="animalDescription"
+        id="animalDescription"
+        placeholder="Description"
+      ></textarea>
+    </div>
+
+    <!-- sterile boolean -->
+    <div class="form-select">
+      <label for="sterile">Stérilisé ?</label>
+      <select formControlName="sterile" id="sterile">
+        <option value="" disabled>Choisir une option</option>
+        <option value="true">Oui</option>
+        <option value="false">Non</option>
+      </select>
+    </div>
+
+    <!-- humanFriendly boolean -->
+    <div class="form-select">
+      <label for="humanFriendly">Sociable avec l'humain ?</label>
+      <select formControlName="humanFriendly" id="humanFriendly">
+        <option value="" disabled>Choisir une option</option>
+        <option value="true">Oui</option>
+        <option value="false">Non</option>
+      </select>
+    </div>
+
+    <!-- animalFriendly boolean -->
+    <div class="form-select">
+      <label for="animalFriendly">Sociable avec les autres animaux ?</label>
+      <select formControlName="animalFriendly" id="animalFriendly">
+        <option value="" disabled>Choisir une option</option>
+        <option value="true">Oui</option>
+        <option value="false">Non</option>
+      </select>
+    </div>
+
+    <!-- allergies -->
+    <div class="form-textarea">
+      <label for="allergies">Allergies</label>
+      <textarea
+        formControlName="allergies"
+        id="allergies"
+        placeholder="Allergies"
+      ></textarea>
+    </div>
+
+    <!-- Image Form -->
+    <app-image-form #imageForm [imageToEdit]="imageToEdit" />
+
+    <br />
+
+    <!-- Toogle to add a veterinarian -->
+    <div class="form-checkbox add-veterinarian">
+      <input
+        type="checkbox"
+        id="addVeterinarian"
+        name="addVeterinarian"
+        (change)="onAddVeterinarian()"
+      />
+      <label for="addVeterinarian">Ajouter un vétérinaire</label>
+    </div>
+
+    <!-- Veterinarian Form -->
+    @if(isAddingVeterinarian || veterinarianToEdit) {
+    <app-veterinarian-form
+      #veterinarianForm
+      [veterinarianToEdit]="veterinarianToEdit"
+    />
+    }
+
+    <!-- Submit and Cancel buttons -->
+    <div class="form-submit">
+      <!-- Delete -->
+      @if (animalToEdit) {
+      <button class="cancel-button" type="button" (click)="onDeleteAnimal()">
+        Supprimer
+      </button>
+      <!-- Submit -->
+      <button
+        class="edit-button"
+        type="submit"
+        [disabled]="!newAnimalForm.valid"
+      >
+        {{ "Modifier" }}
+      </button>
+      } @else {
+      <!-- Submit -->
+      <button
+        class="submit-button"
+        type="submit"
+        [disabled]="!newAnimalForm.valid"
+      >
+        {{ "Ajouter" }}
+      </button>
+      }
+      <!-- Cancel -->
+      <button class="submit-button" type="button" (click)="onCloseForm()">
+        Fermer
+      </button>
+    </div>
+  </form>
+</div>

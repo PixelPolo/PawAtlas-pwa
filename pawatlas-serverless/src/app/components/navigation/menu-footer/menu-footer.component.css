@@ -1,0 +1,14 @@
+p {
+  font-size: 12px;
+  font-weight: bolder;
+}
+
+img {
+  width: 50%;
+  max-width: 75px;
+  height: 50%;
+  max-height: 75px;
+  margin: 10px auto 5px;
+  display: block;
+  cursor: pointer;
+}

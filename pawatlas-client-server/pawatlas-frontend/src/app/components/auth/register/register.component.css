@@ -1,0 +1,97 @@
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 600px;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.content-grid > * {
+  padding: 1.5rem;
+}
+
+.content-grid > .already-account {
+  padding: 0;
+}
+
+.title {
+  grid-column: 1 / 3;
+  text-align: center;
+}
+
+.already-account {
+  grid-column: 1 / 3;
+  text-align: center;
+}
+
+.register-form {
+  position: relative;
+}
+
+/* Vertical line */
+.register-form::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 50%;
+  transform: translateY(50%);
+  width: 1px;
+  background-color: var(--border-color);
+}
+
+.password-hint {
+  margin: 1rem 0;
+  text-align: right;
+  font-size: small;
+  font-style: italic;
+}
+
+.agree {
+  margin: 1rem 0;
+  text-align: center;
+  font-size: small;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.social-login button {
+  width: 100%;
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    grid-column: 1 / 2;
+  }
+
+  /* Horizontal line */
+  .register-form::after {
+    top: 100%;
+    width: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+  }
+
+  .already-account {
+    grid-column: 1 / 2;
+  }
+
+  .social-login {
+    text-align: center;
+  }
+
+  .social-login button {
+    width: 80%;
+  }
+}

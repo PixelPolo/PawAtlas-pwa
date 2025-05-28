@@ -1,0 +1,59 @@
+<!-- Map container -->
+<div id="map"></div>
+
+<!-- Search Bar -->
+<app-map-search-bar class="searchBar" [map]="map"></app-map-search-bar>
+
+<!-- Map Menu -->
+<div class="menu">
+  <app-marker-menu
+    (myMarkersChange)="onMyMarkersChange($event)"
+    (interestsChange)="onInterestsChange($event)"
+    (dangersChange)="onDangersChange($event)"
+    (categoryChange)="onCategoryChanged($event)"
+  ></app-marker-menu>
+</div>
+
+<!-- Personal locate me button -->
+<div class="locateMeButton">
+  <div class="mx-2" style="cursor: pointer">
+    <img
+      src="/assets/icons/locationArrow.png"
+      alt="list icon"
+      (click)="onLocateMe()"
+    />
+  </div>
+</div>
+
+<!-- Personal zoom control -->
+<div class="zoomControl">
+  <div style="cursor: pointer">
+    <img src="/assets/icons/plus.png" alt="zoom icon" (click)="map.zoomIn()" />
+  </div>
+  <div style="cursor: pointer">
+    <img
+      src="/assets/icons/minus.png"
+      alt="zoom icon"
+      (click)="map.zoomOut()"
+    />
+  </div>
+</div>
+
+<!-- Marker Form  -->
+@if(isAddingMarker || markerToEdit) {
+<app-marker-form
+  latitude="{{ this.latitude }}"
+  longitude="{{ this.longitude }}"
+  [markerToEdit]="markerToEdit"
+  (formClosed)="onFormClosed()"
+></app-marker-form>
+}
+
+<!-- Marker Details -->
+@if(markerDetail) {
+<app-marker-details
+  [marker]="markerDetail"
+  (detailsClosed)="onCloseDetails()"
+  (markerEdited)="onMarkerEdited()"
+></app-marker-details>
+}

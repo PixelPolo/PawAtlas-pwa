@@ -1,0 +1,227 @@
+<div class="container">
+  <!-- Map Menu -->
+  <div class="row justify-content-center">
+    <div class="col-12 menu">
+      <app-marker-menu
+        (myMarkersChange)="onMyMarkersChange($event)"
+        (interestsChange)="onInterestsChange($event)"
+        (dangersChange)="onDangersChange($event)"
+        (categoryChange)="onCategoryChanged($event)"
+      ></app-marker-menu>
+    </div>
+  </div>
+
+  <!-- Sort Buttons-->
+  <div class="row mb-2 justify-content-center">
+    <div class="col-12 sortButtons">
+      <!-- Sort by Date -->
+      <div class="col-4 d-flex justify-content-center pe-1">
+        <input
+          type="radio"
+          name="sort"
+          checked
+          class="btn-check"
+          id="sortByDateRadio"
+          (change)="sortByDate()"
+        />
+        <label class="btn custom-button w-100" for="sortByDateRadio"
+          >Date</label
+        >
+      </div>
+      <!-- Sort by Distance -->
+      <div class="col-4 d-flex justify-content-center px-1">
+        <input
+          type="radio"
+          name="sort"
+          class="btn-check"
+          id="sortByDistanceCheckbox"
+          (change)="sortByDistance()"
+        />
+        <label class="btn custom-button w-100" for="sortByDistanceCheckbox"
+          >Distance</label
+        >
+      </div>
+      <!-- Sort by Like -->
+      <div class="col-4 d-flex justify-content-center ps-1">
+        <input
+          type="radio"
+          name="sort"
+          class="btn-check"
+          id="sortByLikeCheckbox"
+          (change)="sortByLike()"
+        />
+        <label class="btn custom-button w-100" for="sortByLikeCheckbox"
+          >Like</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- If no markers to display -->
+  @if (myMarkersChecked && markersToDisplay.length === 0) {
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-2">
+        <div
+          class="card-body text-center rounded"
+          style="height: 60px"
+          [ngStyle]="{ 'background-color': designService.alertColor }"
+        >
+          <p class="card-text">
+            <i>Vous n'avez pas encore ajouté de lieux...</i>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- If no markers to display -->
+  } @else if (markersToDisplay.length === 0) {
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-2">
+        <div
+          class="card-body text-center rounded"
+          style="height: 60px"
+          [ngStyle]="{ 'background-color': designService.alertColor }"
+        >
+          <p class="card-text">
+            <i>Aucun lieu à afficher...</i>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>
+
+<!-- For all markers to display -->
+@for(marker of markersToDisplay; track marker.id) {
+@if(choosenCategory.includes(marker.category)) {
+<div class="container">
+  <!-- Card -->
+  <div
+    class="card mb-2"
+    (click)="onCardClick(marker)"
+    [ngStyle]="
+      marker.id === clickedMarker?.id
+        ? {
+            'border-color': designService.selectionBorderColor,
+            'background-color': designService.selectionBackgroundColor
+          }
+        : {}
+    "
+  >
+    <!-- Card Content -->
+    <div class="row card-content">
+      <!-- Marker Image -->
+      <div class="col-2 image-container">
+        <img
+          src="{{
+            marker.image !== 'No image'
+              ? marker?.image
+              : designService.getIconURL(marker.category)
+          }}"
+          class="img-fluid rounded"
+          alt="marker image"
+        />
+      </div>
+      <!-- Marker Details -->
+      <div class="col-10">
+        <div class="card-body">
+          <div class="row">
+            <!-- Marker Name -->
+            <div class="col-6 p-0">
+              <p class="card-title">
+                <b>{{ marker.name }}</b>
+              </p>
+            </div>
+            <!-- Vote Buttons -->
+            <div class="col-6">
+              <div class="card-text votes">
+                <div>
+                  <span class="mx-2">
+                    <fa-icon
+                      [icon]="faThumbsUp"
+                      [style.color]="designService.likeColor"
+                      [size]="'1x'"
+                    ></fa-icon>
+                    {{ marker.approvedVotes }}
+                  </span>
+                  <span>
+                    <fa-icon
+                      [icon]="faThumbsDown"
+                      [style.color]="designService.dislikeColor"
+                      [size]="'1x'"
+                    ></fa-icon>
+                    {{ marker.disapprovedVotes }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <!-- Marker Description -->
+            <p class="card-text">
+              {{ marker.description }}
+            </p>
+            <!-- Marker Date -->
+            <p class="card-text">
+              <small class="text-body-secondary"
+                >Créé le :
+                {{ designService.getFormattedDate(marker.date) }}</small
+              >
+            </p>
+            <!-- Marker Distance -->
+            <p class="card-text">Distance : {{ computeDistance(marker) }} km</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Buttons popup -->
+@if(clickedMarker && clickedMarker.id === marker.id) {
+<div class="container mt-2 mb-2">
+  <div class="row justify-content-center">
+    <!-- Delete Button -->
+    <div class="col-4 p-1">
+      <button
+        class="btn btn-danger btn-sm rounded-2 w-100"
+        (click)="deleteMarker()"
+      >
+        Supprimer
+      </button>
+    </div>
+    <!-- Edit Button -->
+    <div class="col-4 p-1">
+      <button
+        class="btn btn-primary btn-sm rounded-2 w-100"
+        (click)="onEditMarker()"
+      >
+        Modifier
+      </button>
+    </div>
+    <!-- Edit Button -->
+    <div class="col-4 p-1">
+      <button
+        class="btn btn-success btn-sm rounded-2 w-100"
+        (click)="onMapPopup(marker)"
+      >
+        Carte
+      </button>
+    </div>
+  </div>
+</div>
+} } }
+
+<!-- Marker Form -->
+@if(showMarkerForm) {
+<app-marker-form
+  latitude="{{ this.clickedMarker!.location.latitude }}"
+  longitude="{{ this.clickedMarker!.location.longitude }}"
+  [markerToEdit]="this.clickedMarker"
+  (formClosed)="onFormClosed()"
+></app-marker-form>
+}

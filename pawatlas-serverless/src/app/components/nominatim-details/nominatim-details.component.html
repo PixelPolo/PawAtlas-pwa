@@ -1,0 +1,71 @@
+@if(locationDetails) {
+<div class="container">
+  <div class="card mt-2">
+    <div class="card-body">
+      <!-- Welcome title -->
+      <h4
+        class="card-title text-center"
+        [style.color]="designService.primaryColor"
+      >
+        Détails
+      </h4>
+      <!-- Type -->
+      <h6 class="card-subtitle mb-2 text-muted text-center">
+        Type :
+        {{ locationDetails.type ? locationDetails.type : "Unknown" }}
+      </h6>
+      <!-- Class -->
+      <p class="card-text text-center">
+        Category : {{ locationDetails.class }}
+      </p>
+      <!-- Name -->
+      <h5 class="card-title">
+        {{ locationDetails.name }}
+      </h5>
+      <!-- Address -->
+      <p class="card-text">
+        {{ locationDetails.address.road }} <br />
+        {{ locationDetails.address.postcode }},
+        {{ locationDetails.address.village }} <br />
+        {{ locationDetails.address.state }},
+        {{ locationDetails.address.county }} <br />
+        {{ locationDetails.address.country }}
+      </p>
+      <!-- Coordinates -->
+      <p class="card-text text-center">
+        Latitude : {{ locationDetails.lat | number : "2.2-2" }} <br />
+        Longitude : {{ locationDetails.lon | number : "2.2-2" }}
+      </p>
+      <!-- Extra Tags -->
+      <p class="card-text"></p>
+      <!-- Nominatim and OpenStreetMap Licence -->
+      <p class="card-text" style="text-align: right">
+        Crédits :
+        <small>
+          <a
+            href="https://nominatim.org/release-docs/develop/api/Overview/"
+            target="_blank"
+          >
+            Nominatim API
+          </a>
+          |
+          <a href="https://www.openstreetmap.org/copyright" target="_blank">
+            OpenStreetMap
+          </a>
+        </small>
+      </p>
+    </div>
+  </div>
+  <!-- Nominatim Button -->
+  <div class="row justify-content-center mt-4">
+    <div class="col-4 p-1">
+      <button
+        class="btn btn-danger btn-sm rounded-2 w-100"
+        (click)="backToMap()"
+      >
+        Retour
+      </button>
+    </div>
+  </div>
+</div>
+}

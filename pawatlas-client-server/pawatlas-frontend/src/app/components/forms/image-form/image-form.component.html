@@ -1,0 +1,12 @@
+<!-- Image Form -->
+@if(this.imageURL) {
+<div class="image-container">
+  <img [src]="imageURL" alt="Image" />
+</div>
+}
+
+<!-- Input file -->
+<div class="file-input">
+  <label for="image">Image</label>
+  <input type="file" accept="image/*" (change)="onImageSelected($event)" />
+</div>

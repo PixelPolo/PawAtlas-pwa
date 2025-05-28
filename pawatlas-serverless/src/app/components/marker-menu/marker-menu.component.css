@@ -1,0 +1,35 @@
+.container {
+  margin: 0;
+  padding: 10px;
+}
+
+.custom-button,
+.custom-button:hover {
+  color: #087042;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  font-size: small;
+}
+
+.btn-check:checked + .custom-button {
+  color: #087042;
+  background-color: white;
+  border: 2px solid #087042;
+}
+
+.filters {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min-content;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-color: #b4b4b4 transparent;
+  gap: 10px;
+}
+
+.filter-item {
+  white-space: nowrap;
+}

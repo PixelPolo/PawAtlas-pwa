@@ -1,0 +1,29 @@
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  z-index: 1000;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-height: 70%;
+  max-width: 500px;
+  overflow: auto;
+}
+
+.image-container img {
+  width: 30%;
+  height: 30%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.votesButtons {
+  display: flex;
+  justify-content: right;
+}
+
+fa-icon {
+  margin-right: 10px;
+}

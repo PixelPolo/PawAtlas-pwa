@@ -1,0 +1,45 @@
+<!-- Grid -->
+<div class="content-grid">
+  <!-- My markers -->
+  <div class="form-checkbox filters">
+    <input
+      type="checkbox"
+      id="myMarkers"
+      name="myMarkers"
+      (change)="onMyMarkersChange($event)"
+    />
+    <!-- Types -->
+    <label for="myMarkers">Mes lieux</label>
+    @for(type of this.types; track type.typeID) {
+    <input
+      checked
+      type="checkbox"
+      id="{{ type.typeID }}"
+      name="{{ type.typeName }}"
+      (change)="onTypeChange($event)"
+    />
+    <label for="{{ type.typeID }}">{{ type.typeName }}</label>
+    }
+  </div>
+
+  <!-- Categories -->
+  <div class="form-checkbox categories">
+    @for(category of this.filteredCategories; track category.categoryID) {
+    <input
+      checked
+      type="checkbox"
+      id="{{ category.categoryID }}"
+      name="{{ category.categoryName }}"
+      (change)="onCategoryChange($event)"
+    />
+    <label for="{{ category.categoryID }}">
+      <img
+        class="category-icon"
+        [src]="designService.getIconURL(category.categoryID)"
+        alt="category icon"
+      />
+      {{ category.categoryName }}</label
+    >
+    }
+  </div>
+</div>

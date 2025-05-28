@@ -1,0 +1,23 @@
+<!-- Form : Weight -->
+<form [formGroup]="newWeightForm">
+  <!-- weight -->
+  <div class="form-input">
+    <label for="weight">Poids</label>
+    <input
+      type="text"
+      formControlName="weight"
+      id="weight"
+      placeholder="00.00"
+    />
+  </div>
+  <!-- date -->
+  <div class="form-input">
+    <label for="date">Date</label>
+    <input
+      type="date"
+      formControlName="date"
+      id="date"
+      placeholder="2000-01-01"
+    />
+  </div>
+</form>

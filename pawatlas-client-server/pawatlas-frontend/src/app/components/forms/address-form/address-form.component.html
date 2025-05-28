@@ -1,0 +1,51 @@
+<!-- Title -->
+<h3>Addresse</h3>
+
+<!-- Form : Address -->
+<form [formGroup]="newAddressForm">
+  <!-- street -->
+  <div class="form-input">
+    <label for="street">Rue</label>
+    <input
+      type="text"
+      formControlName="street"
+      id="street"
+      placeholder="Rue de la Gare 12"
+    />
+  </div>
+  <!-- city -->
+  <div class="form-input">
+    <label for="city">Ville</label>
+    <input
+      type="text"
+      formControlName="city"
+      id="city"
+      placeholder="Lausanne"
+    />
+  </div>
+  <!-- postalCode -->
+  <div class="form-input">
+    <label for="postalCode">Code postal</label>
+    <input
+      type="text"
+      formControlName="postalCode"
+      id="postalCode"
+      placeholder="1000"
+    />
+  </div>
+  <!-- state -->
+  <div class="form-input">
+    <label for="state">Canton</label>
+    <input type="text" formControlName="state" id="state" placeholder="VD" />
+  </div>
+  <!-- country -->
+  <div class="form-input">
+    <label for="country">Pays</label>
+    <input
+      type="text"
+      formControlName="country"
+      id="country"
+      placeholder="Suisse"
+    />
+  </div>
+</form>

@@ -1,0 +1,116 @@
+<!-- Grid -->
+<div class="content-grid">
+  <!-- Title -->
+  <div class="title">
+    <h1>PawAtlas</h1>
+    <h2>Inscription</h2>
+  </div>
+
+  <!-- Already an account -->
+  <div class="already-account">
+    Déjà un compte ?
+    <a routerLink="/login">Connexion</a>
+  </div>
+
+  <!-- Register with email and password -->
+  <div class="register-form">
+    <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+      <!-- DisplayName -->
+      <div class="form-input">
+        <label for="displayName">Nom d'utilisateur</label>
+        <input
+          formControlName="displayName"
+          id="displayName"
+          type="text"
+          placeholder="Nom d'utilisateur"
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="form-input">
+        <label for="email">Email</label>
+        <input
+          formControlName="email"
+          id="email"
+          type="email"
+          placeholder="name@example.com"
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="form-input">
+        <label for="password">Mot de Passe</label>
+        <input
+          formControlName="password"
+          id="password"
+          type="password"
+          placeholder="Password"
+        />
+      </div>
+
+      <!-- Password confirm -->
+      <div class="form-input">
+        <label for="passwordConfirm">Confirmer le mot de passe</label>
+        <input
+          formControlName="passwordConfirm"
+          id="passwordConfirm"
+          type="password"
+          placeholder="Password"
+        />
+      </div>
+
+      <!-- Password hint -->
+      <div class="password-hint">
+        1 chiffre, 1 majuscule et 6 caractères min.
+      </div>
+
+      <!-- iAgree -->
+      <div class="agree">
+        <input formControlName="iAgree" id="iAgree" type="checkbox" />
+        <label for="iAgree">
+          J'accepte les
+          <a href="#!">conditions d'utilisation</a>
+        </label>
+      </div>
+
+      <!-- Error message -->
+      @if (errorMsg) {
+      <div class="error-msg">
+        {{ errorMsg }}
+      </div>
+      }
+
+      <!-- Password mismatch -->
+      @if (registerForm.errors?.['passwordMismatch']) {
+      <div class="error-msg">Confirmation du mot de passe incorrecte</div>
+      }
+
+      <!-- Submit -->
+      <div class="form-submit">
+        <button
+          class="submit-button"
+          [disabled]="!registerForm.valid"
+          type="submit"
+        >
+          Inscription
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Login with social -->
+  <div class="social-login">
+    <!-- Google -->
+    <div>
+      <button (click)="loginWithGoogle()">Connexion avec Google</button>
+    </div>
+    <!-- Apple -->
+    <div>
+      <button (click)="loginWithApple()">Connexion avec Apple</button>
+    </div>
+    <!-- Facebook -->
+    <div>
+      <button (click)="loginWithFacebook()">Connexion avec Facebook</button>
+    </div>
+  </div>
+</div>

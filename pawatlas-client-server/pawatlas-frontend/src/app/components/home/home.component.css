@@ -1,0 +1,11 @@
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  max-width: 600px;
+  padding: 1rem;
+  margin: 2rem auto;
+}
+
+.content-grid > * {
+  text-align: center;
+}

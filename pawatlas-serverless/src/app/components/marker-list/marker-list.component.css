@@ -1,0 +1,71 @@
+.menu {
+  width: 100%;
+  max-width: 900px;
+}
+
+.sortButtons {
+  text-align: center;
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 900px;
+}
+
+.custom-button,
+.custom-button:hover {
+  color: #087042;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  font-size: small;
+}
+
+.btn-check:checked + .custom-button {
+  color: #087042;
+  background-color: white;
+  border: 2px solid #087042;
+}
+
+.card-content {
+  margin: 0;
+  padding: 0;
+  max-height: 150px;
+}
+
+.card {
+  margin: 0;
+  padding: 0;
+}
+
+.image-container {
+  max-width: 100px;
+  max-height: 100px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 0;
+  padding: 2%;
+}
+
+.card-body {
+  padding: 2%;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-title {
+  padding: 0;
+  margin: 0;
+}
+
+.card-text {
+  padding: 0;
+  margin: 0;
+}
+
+.votes {
+  text-align: right;
+}

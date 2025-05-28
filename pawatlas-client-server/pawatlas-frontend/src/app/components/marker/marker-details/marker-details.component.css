@@ -1,0 +1,22 @@
+h3 {
+  color: var(--secondary-color);
+}
+
+.grid-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.grid-info > div:first-of-type,
+.no-image,
+.vote-title {
+  font-weight: bold;
+  margin-left: 1rem;
+  text-align: left;
+}
+
+.grid-votes {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  align-items: center;
+}

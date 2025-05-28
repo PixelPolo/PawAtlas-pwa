@@ -1,0 +1,40 @@
+<!-- Application root component -->
+<div class="appComponent">
+  <app-spinner />
+  <router-outlet />
+</div>
+<div class="footer">
+  <app-menu-footer />
+</div>
+
+<!-- Install Banner -->
+<!-- showInstallButton instead false -->
+@if(showInstallButton) {
+<div class="installBanner">
+  <p>
+    Installer l'app pour<br />
+    une meilleure expérience
+  </p>
+  <!-- Close button -->
+  <button class="cancel-button" (click)="cancelInstall()">Annuler</button>
+  <!-- Install button -->
+  <button class="submit-button" (click)="installPwa()">Installer</button>
+</div>
+}
+
+<!-- Install instruction IOS and Safari -->
+<!-- showInstallInstructionsIOS instead false -->
+@if(showInstallInstructionsIOS) {
+<div class="installInstructions">
+  <p>
+    Installer l'app pour<br />
+    une meilleure expérience : <br />
+    Bouton de partage
+    <fa-icon [icon]="faArrowUpFromBracket"></fa-icon>
+    puis <br />
+    "Ajouter à l'écran d'accueil <fa-icon [icon]="faSquarePlus"></fa-icon> "
+  </p>
+  <!-- Close button -->
+  <button class="cancel-button" (click)="cancelInstall()">Fermer</button>
+</div>
+}

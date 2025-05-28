@@ -1,0 +1,65 @@
+<div class="container">
+  <!-- Search Bar-->
+  <div class="row text-center">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="d-flex">
+      <div class="col-12">
+        <input
+          id="searchInput"
+          formControlName="search"
+          type="search"
+          placeholder="Rechercher..."
+          (ngModelChange)="onSearchReset()"
+        />
+        <button id="searchButton" [disabled]="!searchForm.valid" type="submit">
+          <fa-icon
+            [icon]="faMagnifyingGlass"
+            [style.color]="designService.primaryColor"
+          ></fa-icon>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Search result list -->
+@if(searchResultsDisplayed) {
+<div class="search-result">
+  @for(location of searchResults; track location.place_id) {
+  <div class="card">
+    <div class="card-body">
+      <!-- Nominatim and OpenStreetMap Licence -->
+      <p class="card-text" style="text-align: right">
+        Crédits :
+        <small>
+          <a
+            href="https://nominatim.org/release-docs/develop/api/Overview/"
+            target="_blank"
+          >
+            Nominatim API
+          </a>
+        </small>
+      </p>
+      <!-- Name -->
+      <p class="card-title">
+        <strong>{{ location.name }}</strong>
+      </p>
+      <!-- Address -->
+      <p class="card-text">
+        {{ location.address.village }} <br />
+        {{ location.address.state }} <br />
+        {{ location.address.country }}
+      </p>
+      <!-- Button -->
+      <div style="text-align: right">
+        <button
+          class="btn btn-success btn-sm"
+          (click)="onSearchResultClick(location)"
+        >
+          Voir sur la carte
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+</div>
+}

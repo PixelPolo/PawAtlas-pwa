@@ -1,0 +1,56 @@
+<!-- Title -->
+<h3>Contact</h3>
+
+<!-- Form : Contact -->
+<form [formGroup]="newContactForm">
+  <!-- firstName -->
+  <div class="form-input">
+    <label for="firstName">Prénom</label>
+    <input
+      type="text"
+      formControlName="firstName"
+      id="firstName"
+      placeholder="John"
+    />
+  </div>
+  <!-- lastName -->
+  <div class="form-input">
+    <label for="lastName">Nom</label>
+    <input
+      type="text"
+      formControlName="lastName"
+      id="lastName"
+      placeholder="Doe"
+    />
+  </div>
+  <!-- phoneNumber -->
+  <div class="form-input">
+    <label for="phoneNumber">Numéro de téléphone</label>
+    <input
+      type="text"
+      formControlName="phoneNumber"
+      id="phoneNumber"
+      placeholder="021 123 45 67"
+    />
+  </div>
+  <!-- email -->
+  <div class="form-input">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      formControlName="email"
+      id="email"
+      placeholder="name@example.com"
+    />
+  </div>
+  <!-- website -->
+  <div class="form-input">
+    <label for="website">Site web</label>
+    <input
+      type="text"
+      formControlName="website"
+      id="website"
+      placeholder="www.example.com"
+    />
+  </div>
+</form>

@@ -1,0 +1,123 @@
+<!-- Create a card with a form to add a Marker-->
+<div class="card">
+  <!-- Image -->
+  <div class="text-center mt-4">
+    <div class="image-container">
+      <img
+        src="{{
+          marker?.image !== 'No image'
+            ? marker?.image
+            : designService.getIconURL(marker!.category)
+        }}"
+        class="card-img-top"
+        alt="marker image"
+      />
+    </div>
+  </div>
+  <!-- Card -->
+  <div class="card-body mt-2">
+    <!-- Type -->
+    <h6 class="card-subtitle text-body-secondary text-center">
+      {{
+        marker?.type === "interest"
+          ? "Intérêt"
+          : marker?.type === "danger"
+          ? "Danger"
+          : ""
+      }}
+    </h6>
+    <!-- Name -->
+    <h5
+      class="card-title text-center"
+      [style.color]="designService.primaryColor"
+    >
+      {{ marker?.name }}
+    </h5>
+    <!-- Date -->
+    <p class="card-text text-center mb-0">
+      <small class="text-muted"
+        >Créé le : {{ designService.getFormattedDate(marker?.date) }}</small
+      >
+    </p>
+    <!-- Marker Distance -->
+    <p class="card-text text-center mt-0">
+      <small class="text-muted">
+        Distance :
+        {{ computeDistance(marker!) }}
+        km
+      </small>
+    </p>
+    <!-- Description -->
+    <p class="card-text text-center">"{{ marker?.description }}"</p>
+    <!-- Nominatim Button -->
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-12 p-1">
+          <a
+            class="link link-offset-2"
+            (click)="showNominatim()"
+            style="cursor: pointer"
+            [style.color]="designService.primaryColor"
+          >
+            Informations
+          </a>
+        </div>
+      </div>
+      <!-- Vote Buttons-->
+      <div class="votesButtons">
+        <span style="margin-right: 10px">
+          <fa-icon
+            [icon]="faThumbsUp"
+            [style.color]="designService.likeColor"
+            [size]="'2x'"
+            (click)="approveMarker()"
+            style="cursor: pointer"
+          ></fa-icon>
+          <b>{{ marker?.approvedVotes }}</b>
+        </span>
+        <span>
+          <fa-icon
+            [icon]="faThumbsDown"
+            [style.color]="designService.dislikeColor"
+            [size]="'2x'"
+            (click)="disapproveMarker()"
+            style="cursor: pointer"
+          ></fa-icon>
+          <b>{{ marker?.disapprovedVotes }}</b>
+        </span>
+      </div>
+      <!-- Delete and Cancel Buttons -->
+      <div class="container mt-4">
+        <div class="row justify-content-center">
+          <!-- Delete Button -->
+          <div class="col-4 p-1">
+            <button
+              class="btn btn-danger btn-sm rounded-2 w-100"
+              (click)="deleteMarker()"
+            >
+              Supprimer
+            </button>
+          </div>
+          <!-- Edit Button -->
+          <div class="col-4 p-1">
+            <button
+              class="btn btn-primary btn-sm rounded-2 w-100"
+              (click)="editMarker()"
+            >
+              Modifier
+            </button>
+          </div>
+          <!-- Close Button -->
+          <div class="col-4 p-1">
+            <button
+              class="btn btn-success btn-sm rounded-2 w-100"
+              (click)="closeDetails()"
+            >
+              Fermer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<!-- Grid -->
+<div class="content-grid">
+  <!-- Title -->
+  <div class="title">
+    <h1>PawAtlas</h1>
+    <h2>Connexion</h2>
+  </div>
+
+  <!-- No account -->
+  <div class="no-account">
+    Pas de compte ?
+    <a routerLink="/register">Inscription</a>
+  </div>
+
+  <!-- Login with email and password -->
+  <div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+      <!-- Email -->
+      <div class="form-input">
+        <label for="email">Email</label>
+        <input
+          formControlName="email"
+          id="email"
+          type="email"
+          placeholder="name@example.com"
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="form-input">
+        <label for="password">Mot de Passe</label>
+        <input
+          formControlName="password"
+          id="password"
+          type="password"
+          placeholder="Password"
+        />
+      </div>
+
+      <!-- TODO Forgot password -->
+      <div class="password-forgot">
+        <a href="#!">Mot de passe oublié ?</a>
+      </div>
+
+      <!-- Error message -->
+      @if (errorMsg) {
+      <div class="error-msg">Mot de passe et/ou email incorrect</div>
+      }
+
+      <!-- Submit -->
+      <div class="form-submit">
+        <button
+          class="submit-button"
+          [disabled]="!loginForm.valid"
+          type="submit"
+        >
+          Connexion
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Login with social -->
+  <div class="social-login">
+    <!-- Google -->
+    <div>
+      <button (click)="loginWithGoogle()">Connexion avec Google</button>
+    </div>
+    <!-- Apple -->
+    <div>
+      <button (click)="loginWithApple()">Connexion avec Apple</button>
+    </div>
+    <!-- Facebook -->
+    <div>
+      <button (click)="loginWithFacebook()">Connexion avec Facebook</button>
+    </div>
+  </div>
+</div>

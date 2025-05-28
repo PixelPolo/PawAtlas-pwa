@@ -1,0 +1,149 @@
+<div class="form-popup">
+  <!-- Title -->
+  <h1>Détails du lieu</h1>
+
+  <!-- Category -->
+  <h3>{{ markerCategory?.categoryName }}</h3>
+
+  <!-- Type -->
+  <div class="grid-info">
+    <div>Type</div>
+    <div>{{ markerType?.typeName }}</div>
+  </div>
+
+  <!-- Longitude and Latitude -->
+  <div class="grid-info">
+    <div>Coordonnées</div>
+    <div>
+      {{ marker?.markerLat | number : "2.2-2" }} -
+      {{ marker?.markerLng | number : "2.2-2" }}
+    </div>
+  </div>
+
+  <!-- Creation Date -->
+  <div class="grid-info">
+    <div>Création</div>
+    <div>{{ marker?.markerDate | date : "dd/MM/yyyy" }}</div>
+  </div>
+
+  <!-- Distance -->
+  <div class="grid-info">
+    <div>Distance</div>
+    <div>{{ computeDistance(marker) }} km</div>
+  </div>
+
+  <!-- Name -->
+  <div class="grid-info">
+    <div>Nom</div>
+    <div>{{ marker?.markerName }}</div>
+  </div>
+
+  <!-- Description -->
+  <div class="grid-info">
+    <div>Description</div>
+    <div>{{ marker?.markerDescription }}</div>
+  </div>
+
+  <!-- Contact -->
+  @if(markerContact) {
+  <h3>Contact</h3>
+
+  <!-- First Name -->
+  <div class="grid-info">
+    <div>Prénom</div>
+    <div>{{ markerContact.firstName || "Non renseigné..." }}</div>
+  </div>
+
+  <!-- Last Name -->
+  <div class="grid-info">
+    <div>Nom</div>
+    <div>{{ markerContact.lastName || "Non renseigné..." }}</div>
+  </div>
+
+  <!-- Phone Number -->
+  <div class="grid-info">
+    <div>Téléphone</div>
+    <div>{{ markerContact.phoneNumber || "Non renseigné..." }}</div>
+  </div>
+
+  <!-- Email -->
+  <div class="grid-info">
+    <div>Email</div>
+    <div>{{ markerContact.email || "Non renseigné..." }}</div>
+  </div>
+
+  <!-- Website -->
+  <div class="grid-info">
+    <div>Site web</div>
+    <div>{{ markerContact.website || "Non renseigné..." }}</div>
+  </div>
+  }
+
+  <!-- Address -->
+  @if(markerAddress) {
+  <h3>Adresse</h3>
+
+  <!-- Street -->
+  <div class="grid-info">
+    <div>Rue</div>
+    <div>{{ markerAddress.street || "Non renseigné..." }}</div>
+  </div>
+
+  <!-- Postal Code -->
+  <div class="grid-info">
+    <div>Code postal</div>
+    <div>{{ markerAddress.postalCode || "Non renseigné..." }}</div>
+  </div>
+
+  <!-- City -->
+  <div class="grid-info">
+    <div>Ville</div>
+    <div>{{ markerAddress.city || "Non renseigné..." }}</div>
+  </div>
+
+  <!-- State -->
+  <div class="grid-info">
+    <div>État</div>
+    <div>{{ markerAddress.state || "Non renseigné..." }}</div>
+  </div>
+
+  <!-- Country -->
+  <div class="grid-info">
+    <div>Pays</div>
+    <div>{{ markerAddress.country || "Non renseigné..." }}</div>
+  </div>
+  }
+
+  <!-- Image -->
+  <h3>Image</h3>
+  <div class="image-container">
+    @if(markerImageURL) {
+    <img [src]="markerImageURL" alt="Image" />
+    } @else {
+    <div class="no-image">Le lieu n'a pas d'image...</div>
+    }
+  </div>
+
+  <!-- Votes -->
+  <h3>Votes</h3>
+  <div class="grid-votes">
+    <!-- Disapproved votes -->
+    <button class="cancel-button" (click)="onDislikeMarker()">Rejeter</button>
+    <div class="vote-title">Rejetés</div>
+    <div>{{ marker?.markerDisapprovedVotes }}</div>
+    <!-- Approved votes -->
+    <button class="submit-button" (click)="onLikeMarker()">Approuver</button>
+    <div class="vote-title">Approuvés</div>
+    <div>{{ marker?.markerApprovedVotes }}</div>
+  </div>
+
+  <!-- Close, Edit and Delete buttons -->
+  <div class="form-submit">
+    <!-- Delete button -->
+    <button class="cancel-button" (click)="onDeleteMarker()">Supprimer</button>
+    <!-- Edit button -->
+    <button class="edit-button" (click)="onEditMarker()">Modifier</button>
+    <!-- Close button -->
+    <button class="submit-button" (click)="onCloseDetails()">Fermer</button>
+  </div>
+</div>

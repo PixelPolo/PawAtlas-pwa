@@ -1,0 +1,61 @@
+<!-- Application root component -->
+<div class="my-app">
+  <div class="content">
+    <router-outlet />
+  </div>
+  <app-menu-footer class="footer" />
+</div>
+
+<!-- Install Banner -->
+@if(showInstallButton) {
+<div
+  class="installBanner"
+  [ngStyle]="{ 'background-color': designService.alertColor }"
+>
+  <p>
+    Installer l'app pour<br />
+    une meilleure expérience
+  </p>
+  <!-- Close button -->
+  <button
+    class="btn btn-danger btn-sm mx-2"
+    style="width: 75px"
+    (click)="cancelInstall()"
+  >
+    Annuler
+  </button>
+  <!-- Install button -->
+  <button
+    class="btn btn-success btn-sm mx-2"
+    style="width: 75px"
+    (click)="installPwa()"
+  >
+    Installer
+  </button>
+</div>
+}
+
+<!-- Install instruction IOS and Safari -->
+@if(showInstallInstructionsIOS) {
+<div
+  class="installInstructions"
+  [ngStyle]="{ 'background-color': designService.alertColor }"
+>
+  <p>
+    Installer l'app pour<br />
+    une meilleure expérience : <br />
+    Bouton de partage
+    <fa-icon [icon]="faArrowUpFromBracket"></fa-icon>
+    puis <br />
+    "Ajouter à l'écran d'accueil <fa-icon [icon]="faSquarePlus"></fa-icon> "
+  </p>
+  <!-- Close button -->
+  <button
+    class="btn btn-danger btn-sm mx-2"
+    style="width: 75px"
+    (click)="cancelInstall()"
+  >
+    Fermer
+  </button>
+</div>
+}

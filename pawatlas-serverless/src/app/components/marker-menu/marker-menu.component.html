@@ -1,0 +1,91 @@
+<div class="container">
+    <!-- Toogles -->
+    <div class="row mt-1">
+      <!-- My markers -->
+      <div class="col-4 d-flex justify-content-center pe-1">
+        <input
+          type="checkbox"
+          class="btn-check"
+          id="myMarkersCheckbox"
+          (change)="onMyMarkersChange($event)"
+        />
+        <label class="btn custom-button w-100" for="myMarkersCheckbox"
+          >Mes lieux</label
+        >
+      </div>
+      <!-- Interests -->
+      <div class="col-4 d-flex justify-content-center px-1">
+        <input
+          type="checkbox"
+          class="btn-check"
+          id="interestMarkersCheckbox"
+          checked
+          (change)="onInterestChange($event)"
+        />
+        <label class="btn custom-button w-100" for="interestMarkersCheckbox"
+          >Intérêts</label
+        >
+      </div>
+      <!-- Dangers -->
+      <div class="col-4 d-flex justify-content-center ps-1">
+        <input
+          type="checkbox"
+          class="btn-check"
+          id="dangerMarkersCheckbox"
+          checked
+          (change)="onDangerChange($event)"
+        />
+        <label class="btn custom-button w-100" for="dangerMarkersCheckbox"
+          >Dangers</label
+        >
+      </div>
+    </div>
+  
+    <!-- Categories -->
+    <div class="row mt-1">
+      <div class="col-12">
+        <div class="filters">
+          @if(interestChecked) { @for(category of interestCategories; track
+          category.value) {
+          <div class="filter-item">
+            <input
+              type="checkbox"
+              class="btn-check"
+              id="{{ category.value }}"
+              checked
+              (change)="onCategoryChange($event, category.value)"
+            />
+            <label class="btn btn custom-button w-100" for="{{ category.value }}">
+              <img
+                [src]="getIcon(category.value)"
+                alt="{{ category.value }}"
+                style="width: 20px; height: 20px; margin-right: 8px"
+              />
+              {{ category.value }}
+            </label>
+          </div>
+          } } @if(dangerChecked) { @for(category of dangerCategories; track
+          category.value) {
+          <div class="filter-item">
+            <input
+              type="checkbox"
+              class="btn-check"
+              id="{{ category.value }}"
+              checked
+              (change)="onCategoryChange($event, category.value)"
+            />
+            <label class="btn btn custom-button w-100" for="{{ category.value }}">
+              <img
+                [src]="getIcon(category.value)"
+                alt="{{ category.value }}"
+                style="width: 20px; height: 20px; margin-right: 8px"
+              />
+              {{ category.value }}
+            </label>
+          </div>
+          } }
+        </div>
+      </div>
+    </div>
+  </div>
+  

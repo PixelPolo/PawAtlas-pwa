@@ -1,0 +1,67 @@
+<!-- Marker Menu -->
+<app-marker-menu
+  class="marker-menu"
+  (myMarkersChange)="onMyMarkersChange($event)"
+  (categoryChange)="onCategoryChange($event)"
+/>
+
+<div class="content">
+  @for (marker of this.filteredMarkers; track marker.markerID) {
+  <div class="marker-card">
+    <!-- Card title -->
+    <div class="card-title">
+      <!-- Category -->
+      <h3>
+        {{ getCategoryName(marker.categoryID) }}
+      </h3>
+      <!-- Redirect to map button -->
+      <div class="redirect-button">
+        <button class="submit-button" (click)="onRedirectToMap(marker)">
+          Voir sur la carte
+        </button>
+      </div>
+    </div>
+
+    <!-- Distance -->
+    <div class="grid-info">
+      <div>Distance</div>
+      <div>{{ computeDistance(marker) }} km</div>
+    </div>
+
+    <!-- Date -->
+    <div class="grid-info">
+      <div>Date</div>
+      <div>{{ marker.markerDate | date : "dd/MM/yyyy" }}</div>
+    </div>
+
+    <!-- Disapproved votes -->
+    <div class="grid-info">
+      <div>Rejeté</div>
+      <div>{{ marker.markerDisapprovedVotes }}</div>
+    </div>
+
+    <!-- Approved votes -->
+    <div class="grid-info">
+      <div>Approuvé</div>
+      <div>{{ marker.markerApprovedVotes }}</div>
+    </div>
+
+    <!-- Image -->
+    @if (marker.imageID) {
+    <div class="image-container">
+      <img [src]="markerImages[marker.markerID!]" alt="image" />
+    </div>
+    }
+  </div>
+  }
+
+  <!-- Sort buttons -->
+  <div class="sort-buttons">
+    <!-- Close button -->
+    <button (click)="onSortByDate()">Tri par date</button>
+    <!-- Edit button -->
+    <button (click)="onSortByDistance()">Tri par distance</button>
+    <!-- Delete button -->
+    <button (click)="onSortByLike()">Tri par votes</button>
+  </div>
+</div>

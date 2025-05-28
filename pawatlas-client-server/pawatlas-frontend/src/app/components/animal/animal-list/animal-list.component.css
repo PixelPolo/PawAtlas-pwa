@@ -1,0 +1,31 @@
+.content {
+  padding: 1rem;
+}
+
+.animal-card::after {
+  /* Horizontal line */
+  content: "";
+  display: block;
+  border-top: 1px solid var(--secondary-color);
+  margin: 1rem 0;
+}
+
+.card-title {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.grid-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.grid-info > div:first-of-type {
+  font-weight: bold;
+  margin-left: 1rem;
+  text-align: left;
+}
+
+.image-container {
+  margin-top: 1rem;
+}

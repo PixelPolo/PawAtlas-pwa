@@ -1,0 +1,120 @@
+<!-- Animal form -->
+@if(isAddingAnimal || animalToEdit) {
+<app-animal-form
+  [animalToEdit]="animalToEdit"
+  (formClosed)="onCloseAnimalForm()"
+></app-animal-form>
+}
+
+<div class="content">
+  <!-- Title -->
+  <h1>Mes animaux</h1>
+  <div>
+    <button class="submit-button" (click)="onAddAnimal()">
+      Ajouter un animal
+    </button>
+  </div>
+
+  @for(animal of this.animals; track animal.animalID) {
+  <div class="animal-card">
+    <!-- Card title -->
+    <div class="card-title">
+      <!-- Name -->
+      <h3>{{ animal.animalName }}</h3>
+      <!-- Redirect to edit button -->
+      <div class="redirect-button">
+        <button class="submit-button" (click)="onEditAnimal(animal)">
+          Modifier
+        </button>
+      </div>
+    </div>
+
+    <!-- Birth Name -->
+    @if(animal.animalBirthName) {
+    <div class="grid-info">
+      <div>Nom de naissance</div>
+      <div>{{ animal.animalBirthName }}</div>
+    </div>
+    }
+
+    <!-- Chip number -->
+    @if(animal.chipNumber) {
+    <div class="grid-info">
+      <div>Numéro de puce</div>
+      <div>{{ animal.chipNumber }}</div>
+    </div>
+    }
+
+    <!-- Date of birth -->
+    <div class="grid-info">
+      <div>Date de naissance</div>
+      <div>{{ animal.animalBirthDate | date : "dd/MM/yyyy" }}</div>
+    </div>
+
+    <!-- Type -->
+    <div class="grid-info">
+      <div>Type d'animal</div>
+      <div>{{ animal.animalType }}</div>
+    </div>
+
+    <!-- Breed -->
+    <div class="grid-info">
+      <div>Race ou nom d'élevage</div>
+      <div>{{ animal.animalBreed }}</div>
+    </div>
+
+    <!-- Genre -->
+    <div class="grid-info">
+      <div>Genre</div>
+      <div>{{ animal.genderID === "g01" ? "Mâle" : "Femelle" }}</div>
+    </div>
+
+    <!-- Color -->
+    <div class="grid-info">
+      <div>Couleur</div>
+      <div>{{ animal.animalColor }}</div>
+    </div>
+
+    <!-- Description -->
+    @if(animal.animalDescription) {
+    <div class="grid-info">
+      <div>Description</div>
+      <div>{{ animal.animalDescription }}</div>
+    </div>
+    }
+
+    <!-- Sterile -->
+    <div class="grid-info">
+      <div>Stérilisé</div>
+      <div>{{ animal.sterile ? "Oui" : "Non" }}</div>
+    </div>
+
+    <!-- Human friendly -->
+    <div class="grid-info">
+      <div>Sociable avec l'humain</div>
+      <div>{{ animal.humanFriendly ? "Oui" : "Non" }}</div>
+    </div>
+
+    <!-- Animal friendly -->
+    <div class="grid-info">
+      <div>Sociable avec les autres animaux</div>
+      <div>{{ animal.animalFriendly ? "Oui" : "Non" }}</div>
+    </div>
+
+    <!-- Allergies -->
+    @if(animal.allergies) {
+    <div class="grid-info">
+      <div>Allergies</div>
+      <div>{{ animal.allergies }}</div>
+    </div>
+    }
+
+    <!-- Image -->
+    @if(animal.imageID) {
+    <div class="image-container">
+      <img [src]="animalImages[animal.animalID!]" alt="image" />
+    </div>
+    }
+  </div>
+  }
+</div>

@@ -1,0 +1,48 @@
+<!-- Map container -->
+<div id="map"></div>
+
+<!-- Marker Menu -->
+<div class="menu">
+  <app-marker-menu
+    (myMarkersChange)="onMyMarkersChange($event)"
+    (categoryChange)="onCategoryChange($event)"
+  />
+</div>
+
+<!-- Locate me button -->
+<div class="locate-me-button">
+  <img
+    src="/assets/icons/map/locationArrow.png"
+    alt="Locate me"
+    (click)="onLocateMe()"
+  />
+</div>
+
+<!-- Zoom control -->
+<div class="zoom-control">
+  <img src="/assets/icons/map/plus.png" alt="Zoom in" (click)="map.zoomIn()" />
+  <img
+    src="/assets/icons/map/minus.png"
+    alt="Zoom out"
+    (click)="map.zoomOut()"
+  />
+</div>
+
+<!-- Marker Form  -->
+@if(isAddingMarker || markerToEdit) {
+<app-marker-form
+  latitude="{{ this.latitude }}"
+  longitude="{{ this.longitude }}"
+  [markerToEdit]="markerToEdit"
+  (formClosed)="onFormClosed()"
+></app-marker-form>
+}
+
+<!-- Marker Details -->
+@if(markerToDetail) {
+<app-marker-details
+  [marker]="markerToDetail"
+  (detailsClosed)="onDetailsClosed()"
+  (detailsEdited)="onEditMarker()"
+></app-marker-details>
+}
