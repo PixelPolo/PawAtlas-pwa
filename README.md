@@ -15,7 +15,7 @@ Reactive programming concepts were used to handle asynchronous operations effici
 You can find several screenshots from when it was live in my Bachelor thesis and also below.
 
 Here is the link of the application:  
-<https://pawatlas-pwa.web.app/>
+<https://pawatlas-pwa.pixelpolo.com/>
 
 Here is the university page listing all student projects:  
 <https://www.unifr.ch/inf/softeng/en/research/students.html>
