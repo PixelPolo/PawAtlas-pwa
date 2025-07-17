@@ -15,7 +15,7 @@ Reactive programming concepts were used to handle asynchronous operations effici
 You can find several screenshots from when it was live in my Bachelor thesis and also below.
 
 Here is the link of the application:  
-<https://pawatlas-pwa.pixelpolo.com/>
+<https://pawatlas.pwa.pixelpolo.com/>
 
 Here is the university page listing all student projects:  
 <https://www.unifr.ch/inf/softeng/en/research/students.html>
@@ -26,6 +26,9 @@ Or you can download the document directly [here](https://www.unifr.ch/inf/soften
 
 Refactored version using a NestJS backend and a new Angular frontend adapted to a REST API.  
 Same functionalities as above, with a PostgreSQL database and the possibility to add a companion.
+
+Here is the link of the application:  
+<https://pawatlas.pixelpolo.com/>
 
 ## Some screenshots of the client-server app
 
